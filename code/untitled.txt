@@ -93,8 +93,7 @@ print(predict_period_dates)
 prediction = model.predict(trainX[-n_days_for_prediction:]) #shape = (n, 1) where n is the n_days_for_prediction
 
 #Perform inverse transformation to rescale back to original range
-#Since we used 5 variables for transform, the inverse expects same dimensions
-#Therefore, let us copy our values 5 times and discard them after inverse transform
+
 prediction_copies = np.repeat(prediction, df_for_training.shape[1], axis=-1)
 y_pred_future = scaler.inverse_transform(prediction_copies)[:,0]
 
